@@ -1,0 +1,270 @@
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.row {
+    min-width: 1280px;
+    width: 100%;
+}
+.header {
+    background-color: white;
+    height: 57px;
+    z-index: 13;
+}
+.header_title{
+    float: left;
+    padding: 0 5%;
+    margin: 10px 0;
+}
+.title_text {
+    float: left;
+    font-size: 21px;
+    font-family: "SimHei";
+    color: rgb( 57, 58, 58 );
+    z-index: 12;
+    padding: 5px;
+}
+.title_icon {
+    width: 34px;
+    height: 34px;
+    z-index: 7;
+    float: left;
+}
+.header_nav {
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: rgb( 231, 79, 77 );
+    float: right;
+    margin: 18px 0;
+    width: 35%;
+    z-index: 11;
+}
+.nav_tab{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: 19%;
+    color: black;
+}
+.nav_tab:hover{
+    color: red;
+}
+.nav_tab:hover::after{
+    content: url("images/nav-icon.png");
+    position: absolute;
+    width: 20%;
+    top: 24px;
+    left: 15%;
+}
+.header_login {
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    float: right;
+    z-index: 10;
+    margin: 18px 5% 0 15px;
+}
+.login{
+    float: left;
+}
+.login a:hover, .login a:visited, .login a:link, .login a:active {
+    color: rgb( 231, 79, 77 );
+    margin: 0 5px;
+}
+.login_icon {
+    width: 14px;
+    height: 17px;
+    float: left;
+    z-index: 9;
+}
+
+
+
+
+.one {
+    height: 700px;
+    overflow: hidden;
+    background-image: url("images/one-bg.png");
+    background-repeat: round;
+    z-index: 21;
+}
+.one_subtitle {
+    font-size: 21px;
+    font-family: "Microsoft YaHei";
+    color: rgb( 255, 253, 253 );
+    width: 300px;
+    line-height: 1.2;
+    position: absolute;
+    left: 10%;
+    top: 280px;
+    z-index: 19;
+}
+.one_title {
+    font-size: 60px;
+    font-family: "Microsoft YaHei";
+    color: rgb( 255, 255, 255 );
+    line-height: 0.45;
+    position: absolute;
+    left: 10%;
+    top: 190px;
+    z-index: 18;
+}
+.one_button {
+    background-image: url("images/one-button.png");
+    background-size: 120% 120%;
+    background-position: -10px -10px;
+    position: absolute;
+    left: 10%;
+    top: 420px;
+    width: 331px;
+    height: 65px;
+    z-index: 17;
+    font-size: 30px;
+    font-family: "Microsoft YaHei";
+    border: 0;
+    text-align: center;
+    color: white;
+}
+.one_buttontext {
+    color: rgb( 255, 255, 255 );
+    line-height: 0.9;
+    position: absolute;
+    left: 225px;
+    top: 528.277px;
+    z-index: 20;
+}
+.one_cover {
+    opacity: 0.2;
+    width: 100%;
+    height: auto;
+    z-index: 16;
+}
+
+.two {
+    height: 300px;
+    background-color: white;
+    z-index: 33;
+}
+.two_box {
+    font-size: 18px;
+    font-family: "SimHei";
+    color: rgb( 118, 119, 119 );
+    line-height: 1.286;
+    text-align: center;
+    position: relative;
+    float: left;
+    width: 15%;
+    padding: 0 5%;
+    height: 100%;
+    z-index: 32;
+}
+.two_box + .two_box::before{
+    content: url("images/tow-line.png");
+    position: absolute;
+    left: 0;
+    top: 150px;
+}
+.two_box_icon, .two_box_content{
+    margin: 50px 0 0 0;
+}
+
+.three{
+    height: 361px;
+    background-color: rgb(236, 236, 236);
+    z-index: 33;
+}
+
+
+.three_img{
+    margin: 0 auto;
+    padding: 70px;
+    display: block;
+    width: 91px;
+    height: 92px;
+    z-index: 37;
+}
+
+.three_text {
+    font-size: 53.586px;
+    font-family: "SimHei";
+    color: rgba( 50, 51, 51, 0.502 );
+    line-height: 1.056;
+    text-align: center;
+    margin: 0 auto;
+    z-index: 38;
+}
+
+.four{
+    background-image: url("images/four-bg.png");
+    background-repeat: round;
+    height: 341px;
+    z-index: 40;
+}
+.four_title{
+  font-size: 21px;
+  font-family: "Microsoft YaHei";
+  color: rgb( 255, 255, 255 );
+  text-align: center;
+  padding: 30px 0;
+  line-height: 1.994;
+  z-index: 72;
+}
+.four_subtitle{
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  color: rgba( 255, 255, 255, 0.8 );
+  text-align: center;
+  line-height: 2.605;
+  z-index: 73;
+}
+.four_bar{
+    width: 80%;
+    margin: 40px 10%;
+}
+.four_bar *{
+    width: 23%;
+    height: 30px;
+    margin: 0 1%;
+    border: 0;
+    float: left;
+}
+
+
+select{
+    -webkit-appearance: none;
+    background: url("images/four-select.png") no-repeat scroll 95% center transparent;
+    background-color: #FFF;
+    padding: 0 3%;
+}
+select:focus{
+    outline-color: rgb(191, 79, 73);
+}
+option{
+    background-color: #DDD;
+    border-color: rgb(191, 79, 73);
+}
+option[selected]{
+    color: rgb(191, 79, 73);
+    background-color: rgb(191, 79, 73);
+    outline-color: rgb(191, 79, 73);
+    border-color: rgb(191, 79, 73);
+}
+option:hover{
+    background-color: rgb(191, 79, 73);
+    outline-color: rgb(191, 79, 73);
+    border-color: rgb(191, 79, 73);
+}
+option:focus{
+    background-color: rgb(191, 79, 73);
+    outline-color: rgb(191, 79, 73);
+    border-color: rgb(191, 79, 73);
+}
+.four_bar button{
+    background-color: rgb(191, 79, 73);
+    color: white;
+
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>label</title>
+        <style media="screen">
+            .checkbox-label{
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background-image: url("http://p1.bqimg.com/567571/99322cf8c3283e42.png");
+                background-position: -25px -33px;
+            }
+            input[type="checkbox"] {
+                display: none;
+            }
+            #checkbox:checked ~ #cblabel, #checkbox:checked ~ * #cblabel{
+                background-position: -60px -32px;
+            }
+            .redio-label{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("http://p1.bqimg.com/567571/99322cf8c3283e42.png");
+                background-position: -24px -10px;
+            }
+            input[type="radio"]{
+                display: none;
+            }
+            #male:checked ~ #mlabel {
+                background-position: -59px -10px;
+            }
+            #female:checked ~ #fmlabel {
+                background-position: -59px -10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>多选
+            <input type="checkbox" id="checkbox" name="checkbox">
+            <label for="checkbox" id="cblabel" class="checkbox-label"></label>
+        </div>
+        <div>
+            <input type="radio" id="male" name="radio" value="male">
+            <input type="radio" id="female" name="radio" value="female">
+            男<label for="male" class="redio-label" id="mlabel"></label>
+            女<label for="female" class="redio-label" id="fmlabel"></label>
+        </div>
+
+    </body>
+</html>
