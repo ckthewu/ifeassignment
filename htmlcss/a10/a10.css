@@ -1,0 +1,38 @@
+.flex-container{
+    display: flex;
+    height: 280px;
+    padding: 20px;
+    border: 1px solid #aaa;
+    flex-flow: row wrap;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.flex-four{
+    border: 2px solid #00f;
+    height: 200px;
+}
+.flex-container > li{
+    width: 150px;
+}
+.flex-one, .flex-two, .flex-three{
+    border: 2px solid #f00;
+}
+.flex-one{
+    height: 120px;
+}
+.flex-two{
+    height: 100px;
+}
+.flex-three{
+    height: 40px;
+}
+@media (max-width: 640px){
+    .flex-container{
+        align-items: flex-start;
+    }
+    .flex-four{
+        order: -1;
+    }
+}
