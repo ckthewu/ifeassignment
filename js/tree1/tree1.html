@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tree1</title>
+        <style media="screen">
+            div{
+                border: 1px solid #aaa;
+                background-color: white;
+            }
+            #now{
+                background-color: blue;
+            }
+            .d1{
+                width: 800px;
+                height: auto;
+            }
+            .d2, .d3, .d4, .d5{
+                display: inline-block;
+            }
+            .d2{
+                width: 760px;
+                height: 240px;
+                margin: 20px;
+            }
+            .d3{
+                width: 335px;
+                height: 200px;
+                margin: 20px;
+            }
+            .d4{
+                width: 120px;
+                height: 160px;
+                margin: 20px;
+            }
+            .d5{
+                width: 75px;
+                height: 35px;
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d1" id="root">
+            <div class="d2">
+                <div class="d3">
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d3">
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d2">
+                <div class="d3">
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d3">
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                    <div class="d4">
+                        <div class="d5">
+
+                        </div>
+                        <div class="d5">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" name="button" id="DLR">前序遍历</button>
+        <button type="button" name="button" id="LDR">中序遍历</button>
+        <button type="button" name="button" id="LRD">后序遍历</button>
+        <script type="text/javascript">
+        window.onload = function(){
+
+            function getIt(node){
+                t1 = setTimeout(function (){
+                    node.style['background-color'] = "blue";
+                },t+=100);
+                t2 = setTimeout(function (){
+                    node.style['background-color'] = "white";
+                },t+=900);
+            }
+            function getChild(node){
+                var nl = node.childNodes;
+                var dlist = [];
+                for (var i = 0; i < nl.length; i++) {
+                    if(nl[i].nodeType == 1){
+                        dlist.push(nl[i]);
+                    }
+                }
+                return dlist;
+            }
+            function LDR(node){
+                if(node){
+                    var dlist = getChild(node);
+                    LDR(dlist[0]);
+                    getIt(node);
+                    LDR(dlist[1]);
+                }
+            }
+            function LRD(node){
+                if(node){
+                    var dlist = getChild(node);
+                    LRD(dlist[0]);
+                    LRD(dlist[1]);
+                    getIt(node);
+                }
+            }
+            function DLR(node){
+                if(node){
+                    var dlist = getChild(node);
+                    getIt(node);
+                    DLR(dlist[0]);
+                    DLR(dlist[1]);
+                }
+            }
+            var buttonDLR = document.getElementById("DLR");
+            var buttonLDR = document.getElementById("LDR");
+            var buttonLRD = document.getElementById("LRD");
+
+            var main = document.getElementById("root");
+            var t = 0;
+            var t1, t2;
+            buttonDLR.onclick = function (){
+                t = 0;
+                DLR(main);
+            }
+            buttonLDR.onclick = function (){
+                t = 0;
+                LDR(main);
+            }
+            buttonLRD.onclick = function (){
+                t = 0;
+                LRD(main);
+            }
+        }
+
+        </script>
+    </body>
+</html>
