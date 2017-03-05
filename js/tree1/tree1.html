@@ -41,6 +41,7 @@
         </style>
     </head>
     <body>
+        <h1 id="title">树遍历算法展示</h1>
         <div class="d1" id="root">
             <div class="d2">
                 <div class="d3">
@@ -124,14 +125,20 @@
         <button type="button" name="button" id="LRD">后序遍历</button>
         <script type="text/javascript">
         window.onload = function(){
-
+            var buttonDLR = document.getElementById("DLR");
+            var buttonLDR = document.getElementById("LDR");
+            var buttonLRD = document.getElementById("LRD");
+            var main = document.getElementById("root");
+            var title = document.getElementById("title");
+            var timeOutList = [];
+            var t = 0;
             function getIt(node){
-                t1 = setTimeout(function (){
+                timeOutList.push(setTimeout(function (){
                     node.style['background-color'] = "blue";
-                },t+=100);
-                t2 = setTimeout(function (){
+                },t+=100));
+                timeOutList.push(setTimeout(function (){
                     node.style['background-color'] = "white";
-                },t+=900);
+                },t+=900));
             }
             function getChild(node){
                 var nl = node.childNodes;
@@ -167,24 +174,36 @@
                     DLR(dlist[1]);
                 }
             }
-            var buttonDLR = document.getElementById("DLR");
-            var buttonLDR = document.getElementById("LDR");
-            var buttonLRD = document.getElementById("LRD");
-
-            var main = document.getElementById("root");
-            var t = 0;
-            var t1, t2;
-            buttonDLR.onclick = function (){
+            function clearTree(node){
+                if(node){
+                    var dlist = getChild(node);
+                    node.style['background-color'] = "white";
+                    clearTree(dlist[0]);
+                    clearTree(dlist[1]);
+                }
+            }
+            function restartTraverse(){
                 t = 0;
+                for (var i in timeOutList){
+                    clearTimeout(timeOutList[i]);
+                }
+                timeOutList = [];
+                clearTree(main);
+            }
+            buttonDLR.onclick = function (){
+                restartTraverse();
                 DLR(main);
+                title.innerText = "前序遍历";
             }
             buttonLDR.onclick = function (){
-                t = 0;
+                restartTraverse();
                 LDR(main);
+                title.innerText = "中序遍历";
             }
             buttonLRD.onclick = function (){
-                t = 0;
+                restartTraverse();
                 LRD(main);
+                title.innerText = "后序遍历";
             }
         }
 
