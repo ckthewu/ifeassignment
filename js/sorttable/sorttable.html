@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>sort table</title>
+        <style media="screen">
+            table.sort-table{
+                font-size: 20px;
+                text-align: center;
+                border-collapse:collapse;
+            }
+            table.sort-table th, table.sort-table td{
+                border: 2px solid rgb(215, 215, 215);
+                width: 200px;
+                height: 30px;
+            }
+            table.sort-table th{
+                color: white;
+                background-color: rgb(91, 91, 91);
+                position: relative;
+            }
+            table.sort-table td{
+                color: rgb(91, 91, 91);
+            }
+            table.sort-table th.sortable::after{
+                content: "";
+                position: absolute;
+                top: 1px;
+                right: 20px;
+                width: 13px;
+                height: 30px;
+                background-image: url(arrow.png);
+                background-position: 0 0px;
+                background-repeat: no-repeat;
+            }
+            table.sort-table th.sortable.sortAsc::after{
+                background-position: -14px 0;
+            }
+            table.sort-table th.sortable.sortDesc::after{
+                background-position: -28px 0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <table class="sort-table">
+            <thead>
+                <tr>
+                    <th>姓名</th><th class="sortable">语文</th><th class="sortable">数学</th><th class="sortable">英语</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>小明</td><td>80</td><td>90</td><td>70</td>
+                </tr>
+                <tr>
+                    <td>小红</td><td>90</td><td>60</td><td>90</td>
+                </tr>
+                <tr>
+                    <td>小亮</td><td>60</td><td>100</td><td>70</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>说明：对于任何表格 只需要三步就可以实现排序。</p>
+        <ol>
+            <li>给table标签添加类名 sort-table</li>
+            <li>给需要排序的th标签添加类名 sortable</li>
+            <li>调用initSortTable方法</li>
+        </ol>
+        <script type="text/javascript">
+            // 自动计算添加总分
+            function countSum(table){
+                var thead = table.getElementsByTagName("THEAD")[0],
+                    tbody = table.getElementsByTagName("TBODY")[0];
+                var nl = thead.getElementsByTagName("TR");
+                for (var i = 0; i < nl.length; i++) {
+                    var sumTh = document.createElement("th");
+                    sumTh.innerText = "总分";
+                    sumTh.className = "sortable";
+                    nl[i].appendChild(sumTh);
+                }
+                var trs = tbody.getElementsByTagName("TR");
+                for (var i = 0; i < trs.length; i++) {
+                    var tds = trs[i].getElementsByTagName("TD");
+                    var sum = 0;
+                    for (var j = 0; j < tds.length; j++) {
+                        if(!isNaN(tds[j].innerText)){
+                            sum += Number(tds[j].innerText);
+                        }
+                    }
+                    var sumNode = document.createElement("TD");
+                    sumNode.innerText = sum;
+                    trs[i].appendChild(sumNode);
+                }
+            }
+            // 初始化排序列表的方法
+            function initSortTable(table){
+                var tableHeads = table.getElementsByTagName("TH");
+                var tableBody = table.getElementsByTagName("TBODY")[0];
+                var tbodyTrs = tableBody.getElementsByTagName("TR");
+                // 绑定点击事件 实现排序及切换 @button 点击对象 @colNumber 排序的列号
+                function bindButton(button, colNumber){
+                    button.onclick = function(){
+                        var newTrs = [],
+                            order = 1;
+                        for (var i = 0; i < tbodyTrs.length; i++) {
+                            newTrs.push(tbodyTrs[i]);
+                        }
+                        // 清除其他列排序效果
+                        for (var i = 0; i < tableHeads.length; i++) {
+                            if(i != colNumber && tableHeads[i].className.indexOf("sortable") != -1){
+                                tableHeads[i].className = "sortable";
+                            }
+                        }
+                        // 升序降序切换
+                        if(tableHeads[colNumber].className == "sortable sortAsc") {
+                            tableHeads[colNumber].className = "sortable sortDesc";
+                            order = -1;
+                        }
+                        else {
+                            tableHeads[colNumber].className = "sortable sortAsc";
+                        }
+                        newTrs.sort(function(r1, r2){
+                            var n1 = r1.getElementsByTagName("TD")[colNumber].innerText,
+                                n2 = r2.getElementsByTagName("TD")[colNumber].innerText;
+                            return order*(n1 - n2);
+                        })
+                        // 将排序后的列表
+                        for (var i = 0; i < newTrs.length; i++) {
+                            tableBody.appendChild(newTrs[i]);
+                        }
+                    }
+                }
+                for (var i = 0; i < tableHeads.length; i++) {
+                    if(tableHeads[i].className == "sortable"){
+                        bindButton(tableHeads[i], i);
+                    }
+                }
+            }
+            window.onload = function (){
+                var tables = document.getElementsByClassName("sort-table");
+                for (var i = 0; i < tables.length; i++) {
+                    countSum(tables[i]);
+                    initSortTable(tables[i]);
+                }
+            }
+
+        </script>
+    </body>
+</html>
